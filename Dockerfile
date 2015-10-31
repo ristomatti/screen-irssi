@@ -21,6 +21,6 @@ COPY irssi.conf /etc/irssi.conf
 
 VOLUME ["/home"]
 
-EXPOSE 22 113
+EXPOSE 22/tcp 113/tcp 60000-61000/udp
 
 CMD ["/usr/bin/supervisord"]
