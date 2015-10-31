@@ -10,12 +10,13 @@ RUN apt-get update && \
 
 ENV LC_ALL C.UTF-8
 
-RUN apt-get install -y openssh-server mosh oidentd supervisor irssi screen && \
-	apt-get clean && \
-	mkdir -p /var/run/sshd /etc/supervisor/conf.d
+RUN apt-get install -y openssh-server mosh oidentd supervisor irssi screen \
+		libgnutls-openssl27 && \
+	apt-get clean
+
+RUN mkdir -p /var/run/sshd /etc/supervisor/conf.d
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 COPY irssi.conf /etc/irssi.conf
 
 VOLUME ["/home"]
