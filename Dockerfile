@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 ENV LC_ALL C.UTF-8
 
-RUN apt-get install -y openssh-server mosh oidentd supervisor irssi screen \
+RUN apt-get install -y openssh-server oidentd supervisor irssi screen \
 		libgnutls-openssl27 && \
 	apt-get clean
 
@@ -21,6 +21,6 @@ COPY irssi.conf /etc/irssi.conf
 
 VOLUME ["/home"]
 
-EXPOSE 22/tcp 113/tcp 60000-61000/udp
+EXPOSE 22/tcp 113/tcp 
 
 CMD ["/usr/bin/supervisord"]
